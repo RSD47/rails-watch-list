@@ -1,11 +1,16 @@
 <div class="m-3">
   <h1>Lists</h1>
   <%= "You havn't created any lists yet!" if @lists.empty? %>
-  <% @lists.each do |list| %>
-    <div>
-      <%= link_to(list.name, list_path(list), class: "text-decoration-none") %>
-      <%= link_to("Remove", list_delete_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "ms-2 mb-2 text-danger text-decoration-none") %>
-    </div>
-  <% end %>
+  <div class="d-flex">
+    <% @lists.each do |list| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3), url(<%= cl_image_tag list.photo.key, height: 150, width: 200, crop: :fill %>))">
+        <%= link_to(list.name, list_path(list), class: "text-decoration-none") %>
+        <%= link_to("Remove", list_delete_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "ms-2 mb-2 text-danger text-decoration-none") %>
+      </div>
+    <% end %>
+  </div>
   <p><%= link_to("New list", new_list_path, class: "text-decoration-none") %></p>
 </div>
+
+<%= cl_image_tag("igcjqjqenpfcacqncdhi", width: 400, height: 300, crop: :fill) %>
+<%= cl_image_tag("zu3kvcrfiw43n3ne8rpp", width: 150, height: 150, crop: :thumb, gravity: :face) %>
