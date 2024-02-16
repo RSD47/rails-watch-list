@@ -10,8 +10,9 @@ Rails.application.routes.draw do
 
   root to: 'lists#index'
 
-  resources :lists, except: %i[edit update] do
+  resources :lists, except: %i[edit update destroy] do
     resources :bookmarks, only: %i[new create]
   end
   resources :bookmarks, only: :destroy
+  delete "lists/:id", to: "lists#destroy", as: "list_delete"
 end

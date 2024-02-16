@@ -1,5 +1,11 @@
-<h1>Lists</h1>
-<% @lists.each do |list| %>
-  <%= link_to(list.name, list_path(list)) %>
-<% end %>
-<p><%= link_to("list", new_list_path) %></p>
+<div class="m-3">
+  <h1>Lists</h1>
+  <%= "You havn't created any lists yet!" if @lists.empty? %>
+  <% @lists.each do |list| %>
+    <div>
+      <%= link_to(list.name, list_path(list), class: "text-decoration-none") %>
+      <%= link_to("Remove", list_delete_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "ms-2 mb-2 text-danger text-decoration-none") %>
+    </div>
+  <% end %>
+  <p><%= link_to("New list", new_list_path, class: "text-decoration-none") %></p>
+</div>
