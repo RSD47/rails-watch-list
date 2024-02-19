@@ -4,7 +4,7 @@
 </div>
 
 <div class="mb-3">
-  <p class="ms-1"><%= "You havn't saved any movies yet!" if @list.movies.empty? %></p>
+  <p class="ms-3"><%= "You havn't saved any movies yet!" if @list.movies.empty? %></p>
   <% @list.bookmarks.each do |bookmark| %>
     <div class="d-flex m-3 bg-white shadow-sm", style="height: 200px;">
       <%= image_tag(bookmark.movie.poster_url, class: "card-img-left") %>
